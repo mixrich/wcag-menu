@@ -47,6 +47,7 @@
     vertical-align: middle;
 }
 
+/* Такой стиль мог бы иметь место, если бы у нас не было анимации */
 .menu [aria-expanded="false"] + [role="menu"] {
     /* display: none; */
 }
