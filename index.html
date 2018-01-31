@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>WCAG-MENU</title>
+    <link rel="stylesheet" href="menu.css">
+</head>
+
+<body>
+
+    <nav>
+        <ul class="menu" role="menubar" data-role="menu">
+            <li>
+                <a href="#link-1" role="menuitem">Ссылка 1</a>
+            </li>
+            <li>
+                <a href="#link-2" role="menuitem">Ссылка 2</a>
+            </li>
+            <li>
+                <span aria-haspopup="true" aria-expanded="false" role="menuitem" aria-controls="submenu-1" tabindex="0">Пункт с выпадающим меню</span>
+                <ul role="menu" id="submenu-1" aria-hidden="true" style="display: none">
+                    <li>
+                        <a href="#1" role="menuitem">Подменю 1</a>
+                    </li>
+                    <li>
+                        <a href="#2" role="menuitem">Подменю 2</a>
+                    </li>
+                    <li>
+                        <a href="#3" role="menuitem">Подменю 3</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <span aria-haspopup="true" aria-expanded="false" role="menuitem" aria-controls="submenu-2" tabindex="0">Пункт с выпадающим меню</span>
+                <ul role="menu" id="submenu-2" aria-hidden="true" style="display: none">
+                    <li>
+                        <a href="#1" role="menuitem">Подменю 1</a>
+                    </li>
+                    <li>
+                        <a href="#2" role="menuitem">Подменю 2</a>
+                    </li>
+                    <li>
+                        <a href="#3" role="menuitem">Подменю 3</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="#link-5" role="menuitem">Ссылка 5</a>
+            </li>
+        </ul>
+    </nav>
+
+    <script src="menu.js"></script>
+</body>
+
+
+</html>
