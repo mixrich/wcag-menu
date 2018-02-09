@@ -30,7 +30,7 @@ function Menu(container) {
             toggleItem(link);
         });
 
-        const menu = getMenuForItem(link);
+        var menu = getMenuForItem(link);
 
         /**
          * По окончании анимации появления/скрытия  подменю, если оно должно быть скрыто, делаем его display: none, чтобы скрыть окончательно
@@ -99,7 +99,7 @@ function Menu(container) {
      */
     function openItem(itemLink) {
         itemLink.setAttribute('aria-expanded', 'true');
-        const menu = getMenuForItem(itemLink);
+        var menu = getMenuForItem(itemLink);
 
         /* Убираем display: none с подменю и следующим "тиком" убираем атрибут скрытости, чтобы подменю отобразилось с анимацией */
         menu.style.display = '';

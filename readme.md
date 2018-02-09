@@ -98,8 +98,8 @@
 
 ```javascript
 function Menu(container) {
-   const root = container;
-   const links = root.querySelectorAll('[aria-haspopup="true"]');
+   var root = container;
+   var links = root.querySelectorAll('[aria-haspopup="true"]');
 
    function toggleItem(itemLink) {
        if (itemLink.getAttribute('aria-expanded') === 'false') {
@@ -145,7 +145,7 @@ new Menu(document.querySelector('[data-role="menu"]'));
 
 ```javascript
 [].forEach.call(links, function(link) {
-       let timer;
+       var timer;
 
        link.parentElement.addEventListener('mouseenter', function(event) {
            openItem(link);
@@ -188,10 +188,11 @@ link.addEventListener('touchend', function(event) {
 
 ## Реализация дополнительных возможностей
 
-Теперь нужно при клике вне пункта меню и при уходе фокуса закрывать подменю. Для этого добавим подписку на события “click” и “keyup” на document и будем проверять event.target на принадлежность меню. Если элемент, с которым взаимодействуем, находится вне пункта меню, то будем закрывать подменю.
+Теперь нужно при клике вне пункта меню, нажатии клавиши ESC и при уходе фокуса закрывать подменю. Для этого добавим подписку на события “click”, “keydown” и “keyup” на document и будем проверять event.target на принадлежность меню. Если элемент, с которым взаимодействуем, находится вне пункта меню, то будем закрывать подменю.
 
 ```javascript
 var TAB_KEY_CODE = 9;
+var ESC_KEY_CODE = 27;
 
 document.addEventListener('click', function (event) {
    closeNotTargetedItems(event.target);
@@ -200,6 +201,11 @@ document.addEventListener('click', function (event) {
 document.addEventListener('keyup', function (event) {
    if (event.keyCode !== TAB_KEY_CODE) return;
    closeNotTargetedItems(event.target);
+});
+
+document.addEventListener('keydown', function(event) {
+   if (event.keyCode !== ESC_KEY_CODE) return;
+   closeNotTargetedItems(null);
 });
 
 function closeNotTargetedItems(target) {
