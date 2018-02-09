@@ -4,23 +4,24 @@ function Menu(container) {
     var links = root.querySelectorAll('[aria-haspopup="true"]');
     var ENTER_KEY_CODE = 13;
     var TAB_KEY_CODE = 9;
+    var ESC_KEY_CODE = 27;
 
     [].forEach.call(links, function(link) {
         /* Закрывать подменю будем с задержкой в 300ms через таймер в событиях mouseenter и mouseleave */
         var timer;
 
-        link.parentElement.addEventListener('mouseenter', function(event) {
+        link.parentElement.addEventListener('mouseenter', function() {
             openItem(link);
             clearInterval(timer);
         });
 
-        link.parentElement.addEventListener('mouseleave', function(event) {
+        link.parentElement.addEventListener('mouseleave', function() {
             timer = setTimeout(function() {
                 closeItem(link);
             }, 300);
         });
 
-        link.addEventListener('touchend', function(event) {
+        link.addEventListener('touchend', function() {
             toggleItem(link);
         });
 
@@ -50,6 +51,14 @@ function Menu(container) {
     document.addEventListener('keyup', function(event) {
         if (event.keyCode !== TAB_KEY_CODE) return;
         closeNotTargetedItems(event.target);
+    });
+
+    /**
+     * Закрываем подменю по нажатию клавиши ESC
+     */
+    document.addEventListener('keydown', function(event) {
+        if (event.keyCode !== ESC_KEY_CODE) return;
+        closeNotTargetedItems(null);
     });
 
     /**
